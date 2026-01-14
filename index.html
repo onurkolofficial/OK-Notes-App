@@ -14,8 +14,15 @@
           extend: {
             colors: {
               sepia: {
-                bg: '#f4ecd8',
-                text: '#3a2a1d',
+                50: '#fbf8f3',  /* En açık zemin / Kart içi */
+                100: '#f5efdc', /* Ana arka plan (Cream) */
+                200: '#eaddc5', /* Sidebar / İkincil zemin */
+                300: '#d6c4a6', /* Kenarlıklar / Input zemin */
+                400: '#a39075', /* Pasif ikonlar / Placeholder */
+                500: '#857055', /* Orta ton metinler */
+                600: '#6b5842', /* İkonlar */
+                800: '#4e3d2f', /* Ana metin (Kahve) */
+                900: '#3d2e21', /* Başlıklar (Koyu Kahve) */
               }
             }
           }
@@ -41,7 +48,7 @@
         }
         
         .dark body { background-color: #000000; }
-        .sepia body { background-color: #f4ecd8; color: #3a2a1d; }
+        .sepia body { background-color: #f5efdc; color: #4e3d2f; }
         
         /* Safe area paddingleri için yardımcı sınıflar */
         .safe-top { padding-top: var(--sat); }
@@ -58,6 +65,9 @@
         }
         .dark .custom-scrollbar::-webkit-scrollbar-thumb {
             background: rgba(255,255,255,0.05);
+        }
+        .sepia .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(78, 61, 47, 0.1);
         }
 
         /* Editor ve Liste alanları için kaydırma alanı */

@@ -2,7 +2,7 @@
 {
   "appId": "com.onurkol.app.notes",
   "appName": "OK Notlar",
-  "webDir": ".",
+  "webDir": "dist",
   "bundledWebRuntime": false,
   "server": {
     "androidScheme": "https"
