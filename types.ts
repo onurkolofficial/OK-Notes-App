@@ -11,4 +11,6 @@ export interface Note {
   color: string;
   createdAt: number;
   updatedAt: number;
+  isLocked?: boolean;
+  password?: string;
 }

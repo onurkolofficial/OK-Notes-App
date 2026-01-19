@@ -69,12 +69,12 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
   }, [content, showLineNumbers]);
 
   return (
-    <div className="h-screen bg-white dark:bg-black sepia:bg-sepia-100 flex flex-col animate-in fade-in duration-300 transition-colors overflow-hidden">
+    <div className="h-screen bg-slate-50 dark:bg-zinc-950 sepia:bg-sepia-100 flex flex-col animate-in fade-in duration-300 transition-colors overflow-hidden">
       {/* Üst Bar - Sabit */}
-      <nav className="shrink-0 bg-white/90 dark:bg-black/80 sepia:bg-sepia-100/90 backdrop-blur-sm px-6 md:px-12 py-4 flex justify-between items-center z-20 border-b border-slate-100 dark:border-white/5 sepia:border-sepia-300">
+      <nav className="shrink-0 bg-slate-50/90 dark:bg-zinc-950/90 sepia:bg-sepia-100/90 backdrop-blur-md px-6 md:px-12 py-4 flex justify-between items-center z-20 border-b border-slate-100 dark:border-white/5 sepia:border-sepia-300">
         <button 
           onClick={handleBack}
-          className="group flex items-center gap-2 text-slate-500 dark:text-slate-600 sepia:text-sepia-600 hover:text-slate-950 dark:hover:text-white sepia:hover:text-sepia-900 transition-all font-bold text-xs"
+          className="group flex items-center gap-2 text-slate-500 dark:text-zinc-500 sepia:text-sepia-600 hover:text-slate-900 dark:hover:text-zinc-200 sepia:hover:text-sepia-900 transition-all font-bold text-xs"
         >
           <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="4"><path d="m15 18-6-6 6-6"/></svg>
           {t.back}
@@ -83,7 +83,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
         <button
           onClick={handleSave}
           disabled={!title.trim() && !content.trim()}
-          className="bg-slate-900 dark:bg-white dark:text-black sepia:bg-sepia-900 sepia:text-sepia-50 px-6 py-2 rounded-xl font-bold text-xs hover:opacity-90 transition-all active:scale-95 disabled:opacity-20 shadow-sm"
+          className="bg-slate-900 dark:bg-zinc-100 dark:text-black sepia:bg-sepia-900 sepia:text-sepia-50 px-6 py-2 rounded-xl font-bold text-xs hover:opacity-90 transition-all active:scale-95 disabled:opacity-20 shadow-sm"
         >
           {t.save}
         </button>
@@ -97,14 +97,14 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
           <input
             type="text"
             placeholder={t.titlePlaceholder}
-            className="w-full text-3xl md:text-4xl font-bold text-slate-950 dark:text-white sepia:text-sepia-900 placeholder-slate-200 dark:placeholder-zinc-900 sepia:placeholder-sepia-300 outline-none border-none tracking-tight bg-transparent"
+            className="w-full text-3xl md:text-4xl font-bold text-slate-900 dark:text-zinc-100 sepia:text-sepia-900 placeholder-slate-400 dark:placeholder-zinc-800 sepia:placeholder-sepia-500 outline-none border-none tracking-tight bg-transparent"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
 
           <div className="flex flex-wrap items-center gap-8">
             <div className="flex flex-col gap-2">
-              <span className="text-[8px] font-black text-slate-500 dark:text-slate-700 sepia:text-sepia-500 uppercase tracking-widest">{t.categoryLabel}</span>
+              <span className="text-[8px] font-black text-slate-500 dark:text-zinc-600 sepia:text-sepia-600 uppercase tracking-widest">{t.categoryLabel}</span>
               <div className="flex gap-1.5">
                 {categories.map(c => (
                   <button
@@ -112,8 +112,8 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
                     onClick={() => setCategory(c)}
                     className={`px-3 py-1.5 rounded-lg text-[10px] font-bold transition-all ${
                       category === c 
-                      ? 'bg-slate-900 dark:bg-white sepia:bg-sepia-800 text-white dark:text-black sepia:text-sepia-100' 
-                      : 'bg-slate-100 dark:bg-zinc-900 sepia:bg-sepia-200 text-slate-600 dark:text-slate-500 sepia:text-sepia-600 hover:bg-slate-200 dark:hover:bg-zinc-800 sepia:hover:bg-sepia-300'
+                      ? 'bg-slate-900 dark:bg-zinc-100 sepia:bg-sepia-900 text-white dark:text-black sepia:text-sepia-50' 
+                      : 'bg-white dark:bg-zinc-900 sepia:bg-sepia-200 text-slate-600 dark:text-zinc-500 sepia:text-sepia-700 hover:bg-slate-100 dark:hover:bg-zinc-800 sepia:hover:bg-sepia-300'
                     }`}
                   >
                     {t.categoryNames[c]}
@@ -123,13 +123,13 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
             </div>
             
             <div className="flex flex-col gap-2">
-              <span className="text-[8px] font-black text-slate-500 dark:text-slate-700 sepia:text-sepia-500 uppercase tracking-widest">{t.markerLabel}</span>
+              <span className="text-[8px] font-black text-slate-500 dark:text-zinc-600 sepia:text-sepia-600 uppercase tracking-widest">{t.markerLabel}</span>
               <div className="flex gap-2">
                 {colors.map(c => (
                   <button
                     key={c}
                     onClick={() => setColor(c)}
-                    className={`w-4 h-4 rounded-full transition-all ring-offset-2 dark:ring-offset-black sepia:ring-offset-sepia-100 ${color === c ? 'ring-2 ring-slate-900 dark:ring-white sepia:ring-sepia-900 scale-110' : 'hover:scale-125'}`}
+                    className={`w-4 h-4 rounded-full transition-all ring-offset-2 dark:ring-offset-black sepia:ring-offset-sepia-100 ${color === c ? 'ring-2 ring-slate-900 dark:ring-zinc-100 sepia:ring-sepia-900 scale-110' : 'hover:scale-125'}`}
                     style={{ backgroundColor: c }}
                   />
                 ))}
@@ -138,14 +138,14 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
           </div>
         </div>
 
-        {/* Editör Alanı - Flex Grow ile Kalan Alanı Kapla */}
+        {/* Editör Alanı */}
         <div className="flex-1 flex relative border-t border-transparent overflow-hidden">
           
           {/* Satır Numaraları */}
           {showLineNumbers && (
             <div
               ref={lineNumbersRef}
-              className="w-10 md:w-12 shrink-0 bg-slate-50 dark:bg-zinc-900/30 sepia:bg-sepia-200/30 border-r border-slate-100 dark:border-white/5 sepia:border-sepia-300 text-right pr-2 md:pr-3 pt-6 pb-20 select-none overflow-hidden text-slate-300 dark:text-slate-700 sepia:text-sepia-400 font-mono text-sm md:text-base leading-6"
+              className="w-10 md:w-12 shrink-0 bg-slate-100/50 dark:bg-zinc-900/30 sepia:bg-sepia-200/30 border-r border-slate-100 dark:border-white/5 sepia:border-sepia-300 text-right pr-2 md:pr-3 pt-6 pb-20 select-none overflow-hidden text-slate-400 dark:text-zinc-700 sepia:text-sepia-600 font-mono text-sm md:text-base leading-6"
             >
               {lines.map(n => (
                 <div key={n}>{n}</div>
@@ -161,8 +161,8 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
             className={`
               flex-1 w-full h-full pt-6 pb-32 px-4 md:px-12 
               bg-transparent outline-none border-none resize-none 
-              text-slate-800 dark:text-slate-400 sepia:text-sepia-800 
-              placeholder-slate-200 dark:placeholder-zinc-900 sepia:placeholder-sepia-300
+              text-slate-800 dark:text-zinc-300 sepia:text-sepia-800 
+              placeholder-slate-400 dark:placeholder-zinc-800 sepia:placeholder-sepia-500
               ${showLineNumbers 
                 ? 'whitespace-pre overflow-x-auto font-mono text-sm md:text-base leading-6' 
                 : 'text-base md:text-lg leading-relaxed'
@@ -182,7 +182,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
         title={t.unsavedChangesTitle}
       >
         <div className="space-y-4">
-          <p className="text-sm text-slate-600 dark:text-slate-400 sepia:text-sepia-600 font-medium">
+          <p className="text-sm text-slate-600 dark:text-zinc-400 sepia:text-sepia-700 font-medium">
             {t.unsavedChangesDesc}
           </p>
           
@@ -201,7 +201,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
                 setShowExitConfirmation(false);
                 handleSave();
               }}
-              className="px-4 py-3 rounded-xl text-xs font-bold text-white bg-slate-900 dark:bg-white dark:text-black sepia:bg-sepia-900 shadow-lg hover:opacity-90 active:scale-95 transition-all"
+              className="px-4 py-3 rounded-xl text-xs font-bold text-white bg-slate-900 dark:bg-zinc-100 dark:text-black sepia:bg-sepia-900 shadow-lg hover:opacity-90 active:scale-95 transition-all"
             >
               {t.saveAndExit}
             </button>
@@ -209,7 +209,7 @@ const NoteEditor: React.FC<NoteEditorProps> = ({ note, onSave, onClose, language
           
           <button 
             onClick={() => setShowExitConfirmation(false)}
-            className="w-full py-2 text-[10px] font-bold text-slate-400 dark:text-slate-600 sepia:text-sepia-400 hover:text-slate-600 dark:hover:text-slate-400 transition-colors"
+            className="w-full py-2 text-[10px] font-bold text-slate-500 dark:text-zinc-600 sepia:text-sepia-600 hover:text-slate-700 dark:hover:text-zinc-400 transition-colors"
           >
             {t.cancel}
           </button>
